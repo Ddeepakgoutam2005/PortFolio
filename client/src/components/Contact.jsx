@@ -219,7 +219,7 @@ const Contact = () => {
           </div>
 
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d58727.82712594696!2d76.85695!3d23.0791814!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1723618580322!5m2!1sen!2sbd"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.6700020684048!2d77.0869671753347!3d28.609675075677192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1b001082fc13%3A0xbe7bfabc3024d686!2sDabri%20Gopal%20Mandir!5e0!3m2!1sen!2sbd!4v1766427588612!5m2!1sen!2sbd"
             width="600"
             height="450"
             style={{ border: "0" }}
@@ -239,8 +239,8 @@ const Contact = () => {
                 />
               </div>
               <div>
-                <span className="title h6">869. 368. 456. 56</span>
-                <span className="title h6">789 (569) 126 35</span>
+                <span className="title h6">+91 9811759060</span>
+                {/* <span className="title h6">789 (569) 126 35</span> */}
               </div>
             </li>
 
@@ -254,7 +254,7 @@ const Contact = () => {
                 />
               </div>
               <address className="title h6">
-                30-24 Gopal Mandir, Dabri,
+                Gopal Mandir, Dabri,
                 <br />
                 New Delhi, India
               </address>
@@ -270,8 +270,8 @@ const Contact = () => {
                 />
               </div>
               <div>
-                <span className="title h6">info@deepak.com</span>
-                <span className="title h6">jobs@deepak.com</span>
+                <span className="title h6">deepakgoutam2005@gmail.com</span>
+                <span className="title h6">goutamdeepak1977@gmail.com</span>
               </div>
             </li>
           </ul>

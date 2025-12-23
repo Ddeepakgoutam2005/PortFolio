@@ -60,7 +60,7 @@ app.use(express.json());
 // 🔐 CORS setup for both development and production
 const allowedOrigins = [
   process.env.FRONTEND_URL,      // Production frontend
-  'http://localhost:3000'         // Local development frontend
+  'http://localhost:5173'         // Local development frontend
 ];
 
 app.use(cors({

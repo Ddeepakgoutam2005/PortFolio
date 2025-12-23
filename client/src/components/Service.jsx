@@ -18,7 +18,7 @@ const Service = () => {
               <div className="card-icon">
                 <img src="/assets/images/service-icon-2.svg" width="80" height="80" loading="lazy" alt="service icon" />
               </div>
-              <h3 className="card-title"><a href="#">Digital <br />Marketing</a></h3>
+              <h3 className="card-title"><a href="#">Cloud <br />Services</a></h3>
             </div>
           </li>
           <li className="service-item">
@@ -26,7 +26,7 @@ const Service = () => {
               <div className="card-icon">
                 <img src="/assets/images/service-icon-3.svg" width="80" height="80" loading="lazy" alt="service icon" />
               </div>
-              <h3 className="card-title"><a href="#">Graphics <br />Design</a></h3>
+              <h3 className="card-title"><a href="#">Generative <br />AI</a></h3>
             </div>
           </li>
           <li className="service-item">
@@ -34,7 +34,7 @@ const Service = () => {
               <div className="card-icon">
                 <img src="/assets/images/service-icon-4.svg" width="80" height="80" loading="lazy" alt="service icon" />
               </div>
-              <h3 className="card-title"><a href="#">Mobile <br />Application</a></h3>
+              <h3 className="card-title"><a href="#">Machine <br />Learning</a></h3>
             </div>
           </li>
         </ul>

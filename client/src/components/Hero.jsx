@@ -13,7 +13,7 @@ const Hero = () => {
         <div className="hero-content">
           <h1 className="h1 title">Get Your Product Identity From Me.</h1>
           <div className="wrapper">
-            <a href="https://github.com/Ddeepakgoutam2005/Resume/blob/main/cv.pdf" className="btn btn:hover">
+            <a href="https://github.com/Ddeepakgoutam2005/Resume/blob/main/Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn:hover">
               <span className="span">Download CV</span>
               <ion-icon name="cloud-download-outline" aria-hidden="true"></ion-icon>
             </a>

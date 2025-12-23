@@ -118,14 +118,14 @@ function App() {
           <div className="section cta" aria-label="work with me">
             <div className="container">
               <h2 className="title h2 section-title text-center">Let's Work Together On Your Next Project!</h2>
-              <a href="#" className="btn btn:hover">
+              <a href="#contact" className="btn btn:hover">
                 <span className="span">Hire Me Now</span>
                 <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
               </a>
             </div>
           </div>
           <Project />
-          <Testimonials />
+          {/* <Testimonials /> */}
           <Contact />
         </article>
       </main>

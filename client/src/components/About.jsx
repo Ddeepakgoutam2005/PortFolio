@@ -14,15 +14,15 @@ const About = () => {
             <li className="tab-btn-item">
               <button className={`tab-btn title h6 ${activeTab === 'skillset' ? 'active' : ''}`} onClick={() => setActiveTab('skillset')}>Skillset</button>
             </li>
-            <li className="tab-btn-item">
+            {/* <li className="tab-btn-item">
               <button className={`tab-btn title h6 ${activeTab === 'interview' ? 'active' : ''}`} onClick={() => setActiveTab('interview')}>Interview</button>
-            </li>
+            </li> */}
             <li className="tab-btn-item">
               <button className={`tab-btn title h6 ${activeTab === 'awward' ? 'active' : ''}`} onClick={() => setActiveTab('awward')}>Awards</button>
             </li>
-            <li className="tab-btn-item">
+            {/* <li className="tab-btn-item">
               <button className={`tab-btn title h6 ${activeTab === 'exhibition' ? 'active' : ''}`} onClick={() => setActiveTab('exhibition')}>Exhibition</button>
-            </li>
+            </li> */}
           </ul>
 
           <div className={`tab-content ${activeTab === 'about' ? 'active' : ''}`}>
@@ -33,21 +33,19 @@ const About = () => {
                 <div className="about-content">
                   <h2 className="h4 title section-title">A Brief Journey Through My Universe.</h2>
                   <p className="section-text">
-                    Hello! I'm Deepak Goutam, a passionate web developer based in New Delhi. With over 2 years of
-                    experience in front-end and back-end development, I specialize in creating dynamic and responsive
-                    websites using modern technologies like React, Node.js, and CSS Grid.
+                    Hello! I am Deepak Goutam, a dedicated web developer based in New Delhi. With more than 2 years of hands-on experience in both front-end and back-end development, I focus on building scalable, user-friendly, and visually engaging web applications using modern tools such as React, Node.js, and advanced CSS layouts.
                   </p>
                   <ul className="about-list">
                     <li className="about-item"><p className="list-title">Name</p><span className="span title h5">Deepak Goutam</span></li>
-                    <li className="about-item"><p className="list-title">Phone Number</p><span className="span title h5">9811759006</span></li>
-                    <li className="about-item"><p className="list-title">Email Address</p><span className="span title h5">deepak@gmail.com</span></li>
+                    {/* <li className="about-item"><p className="list-title">Phone Number</p><span className="span title h5">9811759060</span></li> */}
+                    {/* <li className="about-item"><p className="list-title">Email Address</p><span className="span title h6">deepakgoutam2005@gmail.com</span></li> */}
                     <li className="about-item">
                       <p className="list-title">Social Network</p>
                       <div className="social-list">
-                        <a href="https://www.facebook.com/profile.php?id=100022035533716" className="social-link h6" title="Facebook">Fb.</a>
-                        <a href="https://www.instagram.com/deepakgoutam2005/" className="social-link h6" title="Instagram">In.</a>
-                        <a href="https://www.linkedin.com/in/deepak-goutam-a83409260?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" className="social-link h6" title="Linkedin">Ln.</a>
-                        <a href="https://x.com/DeepakG98117590?t=BFC_rdMsm8JVVpyTh6_84g&s=09" className="social-link h6" title="Twitter">Tw.</a>
+                        <a href="https://www.facebook.com/profile.php?id=100022035533716" target="_blank" rel="noopener noreferrer" className="social-link h6" title="Facebook">Fb.</a>
+                        <a href="https://www.instagram.com/deepakgoutam2005/" target="_blank" rel="noopener noreferrer" className="social-link h6" title="Instagram">In.</a>
+                        <a href="https://www.linkedin.com/in/deepak-goutam-a83409260?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" className="social-link h6" title="Linkedin">Ln.</a>
+                        <a href="https://x.com/DeepakG98117590?t=BFC_rdMsm8JVVpyTh6_84g&s=09" target="_blank" rel="noopener noreferrer" className="social-link h6" title="Twitter">Tw.</a>
                       </div>
                     </li>
                   </ul>
@@ -66,11 +64,11 @@ const About = () => {
                   </p>
                   <ul className="skill-list">
                     <li>
-                      <div className="skill-wrapper"><span className="span">Website Development</span><span className="value">95%</span></div>
-                      <div className="progress-bar"><div className="progress-fill" style={{width: '95%'}}></div></div>
+                      <div className="skill-wrapper"><span className="span">Website Development</span><span className="value">80%</span></div>
+                      <div className="progress-bar"><div className="progress-fill" style={{width: '80%'}}></div></div>
                     </li>
                     <li>
-                      <div className="skill-wrapper"><span className="span">Design UI & UX</span><span className="value">85%</span></div>
+                      <div className="skill-wrapper"><span className="span">Problem Solving</span><span className="value">85%</span></div>
                       <div className="progress-bar"><div className="progress-fill" style={{width: '85%'}}></div></div>
                     </li>
                   </ul>
@@ -107,10 +105,11 @@ const About = () => {
                 <li>
                   <div className="award-card">
                     <figure className="card-banner img-holder" style={{'--width': '534', '--height': '383'}} data-tilt>
-                      <img src="/assets/images/awward-1.jpg" width="534" height="383" loading="lazy" alt="certificate" className="img-cover" />
+                      <img src="/assets/images/awward-1.jfif" width="534" height="383" loading="lazy" alt="certificate" className="img-cover" />
                     </figure>
                   </div>
                 </li>
+
                 <li>
                   <div className="award-card">
                     <figure className="card-banner img-holder" style={{'--width': '534', '--height': '383'}} data-tilt>
@@ -121,7 +120,14 @@ const About = () => {
                 <li>
                   <div className="award-card">
                     <figure className="card-banner img-holder" style={{'--width': '534', '--height': '383'}} data-tilt>
-                      <img src="/assets/images/awward-3.jpg" width="534" height="383" loading="lazy" alt="certificate" className="img-cover" />
+                      <img src="/assets/images/awward-3.png" width="534" height="383" loading="lazy" alt="certificate" className="img-cover" />
+                    </figure>
+                  </div>
+                </li>
+                <li>
+                  <div className="award-card">
+                    <figure className="card-banner img-holder" style={{'--width': '534', '--height': '383'}} data-tilt>
+                      <img src="/assets/images/awward-4.png" width="534" height="383" loading="lazy" alt="certificate" className="img-cover" />
                     </figure>
                   </div>
                 </li>
