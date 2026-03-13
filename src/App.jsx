@@ -4,7 +4,6 @@ import Hero from './components/Hero';
 import Service from './components/Service';
 import About from './components/About';
 import Project from './components/Project';
-import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import './App.css';
@@ -125,7 +124,6 @@ function App() {
             </div>
           </div>
           <Project />
-          {/* <Testimonials /> */}
           <Contact />
         </article>
       </main>

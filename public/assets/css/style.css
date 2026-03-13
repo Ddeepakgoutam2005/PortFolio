@@ -370,6 +370,24 @@ body.nav-active { overflow: hidden; }
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 15px;
+}
+
+.header-favicon {
+  display: flex;
+  align-items: center;
+}
+
+.header-favicon img {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-circle);
+}
+
+@media (min-width: 992px) {
+  .header-favicon {
+    margin-inline-start: auto;
+  }
 }
 
 .nav-open-btn {
@@ -782,20 +800,53 @@ body.nav-active { overflow: hidden; }
 
 .project-card .card-title:is(:hover, :focus-visible) { background-size: 100% 1px; }
 
+.slider-container {
+  overflow: hidden;
+  width: 100%;
+}
+
 .slider-list {
   display: flex;
   align-items: flex-start;
   gap: 30px;
-  overflow: auto;
-  scroll-snap-type: inline mandatory;
   padding-block-end: 5px;
+  width: max-content;
+  will-change: transform;
 }
 
-.slider-list::-webkit-scrollbar { display: none; }
+.has-scroll-animation {
+  animation: scroll 30s linear infinite;
+}
+
+.has-scroll-animation:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 15px)); 
+  }
+}
 
 .slider-item {
-  min-width: 100%;
+  width: 90vw;
+  max-width: 400px;
   scroll-snap-align: start;
+}
+
+@media (min-width: 768px) {
+  .slider-item {
+    width: 45vw;
+  }
+}
+
+@media (min-width: 992px) {
+  .slider-item {
+    width: 30vw;
+  }
 }
 
 
@@ -1156,7 +1207,7 @@ textarea.input-field {
    * PROJECTS
    */
 
-  .slider-item { min-width: calc(50% - 15px); }
+  /* Removed min-width as it is handled by the scrolling animation logic */
 
 
 
@@ -1338,7 +1389,7 @@ textarea.input-field {
    * PROJECTS
    */
 
-  .slider-item { min-width: calc(33.33% - 20px); }
+  /* Removed min-width as it is handled by the scrolling animation logic */
 
 
 

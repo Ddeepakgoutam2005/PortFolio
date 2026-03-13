@@ -18,6 +18,11 @@ const Header = () => {
           <span className="line line-1"></span>
           <span className="line line-2"></span>
         </button>
+        <div className="header-favicon">
+          <a href="#home">
+            <img src="/favicon.svg" width="32" height="32" alt="Favicon" />
+          </a>
+        </div>
         <div className="overlay" data-overlay data-nav-toggler></div>
       </div>
     </header>

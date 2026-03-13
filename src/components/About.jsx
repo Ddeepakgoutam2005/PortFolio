@@ -14,15 +14,9 @@ const About = () => {
             <li className="tab-btn-item">
               <button className={`tab-btn title h6 ${activeTab === 'skillset' ? 'active' : ''}`} onClick={() => setActiveTab('skillset')}>Skillset</button>
             </li>
-            {/* <li className="tab-btn-item">
-              <button className={`tab-btn title h6 ${activeTab === 'interview' ? 'active' : ''}`} onClick={() => setActiveTab('interview')}>Interview</button>
-            </li> */}
             <li className="tab-btn-item">
               <button className={`tab-btn title h6 ${activeTab === 'awward' ? 'active' : ''}`} onClick={() => setActiveTab('awward')}>Awards</button>
             </li>
-            {/* <li className="tab-btn-item">
-              <button className={`tab-btn title h6 ${activeTab === 'exhibition' ? 'active' : ''}`} onClick={() => setActiveTab('exhibition')}>Exhibition</button>
-            </li> */}
           </ul>
 
           <div className={`tab-content ${activeTab === 'about' ? 'active' : ''}`}>
@@ -79,23 +73,6 @@ const About = () => {
               </div>
           </div>
 
-          <div className={`tab-content ${activeTab === 'interview' ? 'active' : ''}`}>
-             <div className="grid-list">
-                <div className="interview-card img-holder" style={{'--width': '376', '--height': '420'}} data-tilt>
-                  <img src="/assets/images/interview-1.jpg" width="376" height="420" loading="lazy" alt="interview 1" className="img-cover" />
-                  <button className="btn btn:hover">Play</button>
-                </div>
-                <div className="interview-card img-holder" style={{'--width': '376', '--height': '420'}} data-tilt>
-                  <img src="/assets/images/interview-2.jpg" width="376" height="420" loading="lazy" alt="interview 2" className="img-cover" />
-                  <button className="btn btn:hover">Play</button>
-                </div>
-                <div className="interview-card img-holder" style={{'--width': '376', '--height': '420'}} data-tilt>
-                  <img src="/assets/images/interview-3.jpg" width="376" height="420" loading="lazy" alt="interview 3" className="img-cover" />
-                  <button className="btn btn:hover">Play</button>
-                </div>
-              </div>
-          </div>
-
           <div className={`tab-content ${activeTab === 'awward' ? 'active' : ''}`}>
               <h3 className="h4 title section-title">
                 We're a team of creatives who are excited about unique ideas and help IT-tech companies to make identity
@@ -132,23 +109,6 @@ const About = () => {
                   </div>
                 </li>
               </ul>
-          </div>
-
-          <div className={`tab-content ${activeTab === 'exhibition' ? 'active' : ''}`}>
-            <ul className="grid-list">
-              {[1, 2, 3, 4, 5, 6].map((num) => (
-                 <li key={num}>
-                  <div className="exhibition-card">
-                    <figure className="card-banner img-holder" style={{'--width': '376', '--height': '200'}} data-tilt>
-                      <img src={`/assets/images/exhibition-${num}.jpg`} width="376" height="200" loading="lazy" alt="image" className="img-cover" />
-                    </figure>
-                    <div className="card-icon">
-                      <ion-icon name="image-outline" aria-hidden="true"></ion-icon>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </div>
