@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
+  const [errorMessage, setErrorMessage] = useState("");
   const submissionDestination = "deepakgoutam2005@gmail.com";
   const debugUrl = "http://127.0.0.1:7777/event";
 
@@ -27,6 +28,7 @@ const Contact = () => {
     event.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus(null);
+    setErrorMessage("");
 
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData.entries());
@@ -54,11 +56,19 @@ const Contact = () => {
         body: JSON.stringify(data)
       });
 
-      if (response.ok) {
+      let responseData = null;
+      try {
+        responseData = await response.json();
+      } catch {
+        // Response might not be valid JSON
+      }
+
+      if (response.ok && responseData && (responseData.success === "true" || responseData.success === true)) {
         // #region debug-point D:response-success
         reportDebug("D", "FormSubmit response ok", {
           status: response.status,
           statusText: response.statusText,
+          responseData,
         });
         // #endregion
         setSubmitStatus("success");
@@ -68,9 +78,15 @@ const Contact = () => {
         reportDebug("E", "FormSubmit response not ok", {
           status: response.status,
           statusText: response.statusText,
+          responseData,
         });
         // #endregion
         setSubmitStatus("error");
+        if (responseData && responseData.message) {
+          setErrorMessage(responseData.message);
+        } else {
+          setErrorMessage("The message could not be sent. Please check your network and try again.");
+        }
       }
     } catch (error) {
       // #region debug-point F:fetch-exception
@@ -80,10 +96,14 @@ const Contact = () => {
       // #endregion
       console.error("Form submission error:", error);
       setSubmitStatus("error");
+      setErrorMessage("An unexpected error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
-      // Optional: Clear success message after some time
-      setTimeout(() => setSubmitStatus(null), 5000);
+      // Optional: Clear success/error messages after some time
+      setTimeout(() => {
+        setSubmitStatus(null);
+        setErrorMessage("");
+      }, 8000);
     }
   };
 
@@ -145,18 +165,6 @@ const Contact = () => {
                 className="input-field"
               />
 
-              <p
-                style={{
-                  marginTop: "-6px",
-                  marginBottom: "18px",
-                  color: "var(--text-light-gray)",
-                  fontSize: "var(--fontSize-9)",
-                  lineHeight: 1.6,
-                }}
-              >
-                Messages are sent through FormSubmit to {submissionDestination}.
-              </p>
-
               <button type="submit" className="btn btn:hover" disabled={isSubmitting}>
                 <span className="span">{isSubmitting ? "Sending..." : "Get A Quote"}</span>
                 <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
@@ -167,14 +175,24 @@ const Contact = () => {
                   aria-live="polite"
                   style={{
                     marginTop: "16px",
-                    padding: "12px 14px",
+                    padding:
+                      submitStatus === "success"
+                        ? "0"
+                        : "12px 14px",
                     borderRadius: "12px",
                     textAlign: "left",
-                    fontSize: "var(--fontSize-8)",
+                    fontSize:
+                      submitStatus === "success"
+                        ? "var(--fontSize-9)"
+                        : "var(--fontSize-8)",
+                    fontWeight:
+                      submitStatus === "success"
+                        ? "var(--weight-medium)"
+                        : "normal",
                     lineHeight: 1.6,
                     backgroundColor:
                       submitStatus === "success"
-                        ? "rgba(60, 180, 120, 0.16)"
+                        ? "transparent"
                         : "rgba(255, 80, 80, 0.16)",
                     color:
                       submitStatus === "success"
@@ -182,13 +200,13 @@ const Contact = () => {
                         : "#ff9b9b",
                     border:
                       submitStatus === "success"
-                        ? "1px solid rgba(60, 180, 120, 0.4)"
+                        ? "none"
                         : "1px solid rgba(255, 80, 80, 0.4)",
                   }}
                 >
                   {submitStatus === "success"
-                    ? `Your message was sent successfully to ${submissionDestination}.`
-                    : `The message could not be sent. Please try again or email ${submissionDestination} directly.`}
+                    ? "Submitted successfully!"
+                    : errorMessage || `The message could not be sent. Please try again or email ${submissionDestination} directly.`}
                 </p>
               )}
             </form>
