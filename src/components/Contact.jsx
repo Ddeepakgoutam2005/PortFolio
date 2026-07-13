@@ -3,6 +3,25 @@ import React, { useState } from "react";
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
+  const submissionDestination = "deepakgoutam2005@gmail.com";
+  const debugUrl = "http://127.0.0.1:7777/event";
+
+  // #region debug-point A:report-form-submit
+  const reportDebug = (hypothesisId, msg, data = {}, runId = "pre-fix") =>
+    fetch(debugUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        sessionId: "form-submit-check",
+        runId,
+        hypothesisId,
+        location: "src/components/Contact.jsx",
+        msg: `[DEBUG] ${msg}`,
+        data,
+        ts: Date.now(),
+      }),
+    }).catch(() => {});
+  // #endregion
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -11,8 +30,21 @@ const Contact = () => {
 
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData.entries());
+    // #region debug-point B:submit-start
+    reportDebug("B", "Contact form submit started", {
+      fieldNames: Object.keys(data),
+      hasMessage: Boolean(data.message),
+      hasEmail: Boolean(data.email),
+    });
+    // #endregion
 
     try {
+      // #region debug-point C:fetch-request
+      reportDebug("C", "Sending FormSubmit request", {
+        endpoint: "https://formsubmit.co/ajax/deepakgoutam2005@gmail.com",
+        payloadKeys: Object.keys(data),
+      });
+      // #endregion
       const response = await fetch("https://formsubmit.co/ajax/deepakgoutam2005@gmail.com", {
         method: "POST",
         headers: {
@@ -23,12 +55,29 @@ const Contact = () => {
       });
 
       if (response.ok) {
+        // #region debug-point D:response-success
+        reportDebug("D", "FormSubmit response ok", {
+          status: response.status,
+          statusText: response.statusText,
+        });
+        // #endregion
         setSubmitStatus("success");
         event.target.reset();
       } else {
+        // #region debug-point E:response-error
+        reportDebug("E", "FormSubmit response not ok", {
+          status: response.status,
+          statusText: response.statusText,
+        });
+        // #endregion
         setSubmitStatus("error");
       }
     } catch (error) {
+      // #region debug-point F:fetch-exception
+      reportDebug("F", "FormSubmit request threw", {
+        message: error instanceof Error ? error.message : String(error),
+      });
+      // #endregion
       console.error("Form submission error:", error);
       setSubmitStatus("error");
     } finally {
@@ -96,19 +145,50 @@ const Contact = () => {
                 className="input-field"
               />
 
+              <p
+                style={{
+                  marginTop: "-6px",
+                  marginBottom: "18px",
+                  color: "var(--text-light-gray)",
+                  fontSize: "var(--fontSize-9)",
+                  lineHeight: 1.6,
+                }}
+              >
+                Messages are sent through FormSubmit to {submissionDestination}.
+              </p>
+
               <button type="submit" className="btn btn:hover" disabled={isSubmitting}>
                 <span className="span">{isSubmitting ? "Sending..." : "Get A Quote"}</span>
                 <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
               </button>
 
-              {submitStatus === "success" && (
-                <p className="popup-message visible" style={{ marginTop: "15px", color: "var(--text-white)", textAlign: "left", fontSize: "var(--fontSize-8)" }}>
-                  Submitted successfully!
-                </p>
-              )}
-              {submitStatus === "error" && (
-                <p className="popup-message visible" style={{ marginTop: "15px", color: "red", textAlign: "left", fontSize: "var(--fontSize-8)" }}>
-                  Something went wrong. Please try again.
+              {submitStatus && (
+                <p
+                  aria-live="polite"
+                  style={{
+                    marginTop: "16px",
+                    padding: "12px 14px",
+                    borderRadius: "12px",
+                    textAlign: "left",
+                    fontSize: "var(--fontSize-8)",
+                    lineHeight: 1.6,
+                    backgroundColor:
+                      submitStatus === "success"
+                        ? "rgba(60, 180, 120, 0.16)"
+                        : "rgba(255, 80, 80, 0.16)",
+                    color:
+                      submitStatus === "success"
+                        ? "var(--text-white)"
+                        : "#ff9b9b",
+                    border:
+                      submitStatus === "success"
+                        ? "1px solid rgba(60, 180, 120, 0.4)"
+                        : "1px solid rgba(255, 80, 80, 0.4)",
+                  }}
+                >
+                  {submitStatus === "success"
+                    ? `Your message was sent successfully to ${submissionDestination}.`
+                    : `The message could not be sent. Please try again or email ${submissionDestination} directly.`}
                 </p>
               )}
             </form>
